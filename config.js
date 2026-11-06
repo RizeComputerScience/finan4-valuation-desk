@@ -375,7 +375,7 @@
     storageKey: 'rize-finan4-u9-valuation-v1', filePrefix: 'ValuationDesk',
     verifyUrl: 'https://rizecomputerscience.github.io/finan4-valuation-desk/verify.html',
     calcPlaceholder: '2.06/(0.08-0.03)',
-    calcHint: 'Type or tap. Use / to divide and parentheses to group, so 2.06/(0.08-0.03) is the value per share in the worked example.',
+    calcHint: 'Type or tap. Use / to divide and parentheses to group, so 2.06/(0.08-0.03) is the value of a share that pays $2.06 next year, growing 3% a year, at an 8% required return.',
     story: { title: 'The Valuation Desk', kicker: 'Corporate Finance, Unit 9', company: 'Bramble Street Research', team: 'Restaurant Research Team',
       from: 'Ilse Ostrander', fromTitle: 'senior analyst, Bramble Street Research',
       dek: 'You have joined Bramble Street Research, which writes reports on restaurant stocks for investors. Ilse Ostrander, a senior analyst, is valuing Copperline Burgers, a chain that has raised its dividend every year for decades. She wants three numbers: what its dividends are worth, what similar chains say it is worth, and what growth today’s share price assumes.',
