@@ -307,7 +307,7 @@
   function helpText(t, lvl) {
     const rg = t.r - t.g;
     if (t.id === 't1') return lvl === 1 ? `Next year’s dividend = ${m(t.D0)} × (1 + ${t.g}) = ${m(t.D1)}.`
-      : `Next year’s dividend: ${m(t.D1)}. r − g: ${pc(t.r)} − ${pc(t.g)} = ${pc(rg)}. Value: ${m(t.D1)} ÷ ${dec(rg)} = ${m(t.V)}. In the calculator: <code>${t.D1}/(${t.r}-${t.g})</code>.`;
+      : `Next year’s dividend: ${m(t.D1)}. r − g: ${pc(t.r)} − ${pc(t.g)} = ${pc(rg)}. Value: ${m(t.D1)} ÷ ${dec(rg)} = ${m(t.V)}. In Desmos: <code>${t.D1}/(${t.r}-${t.g})</code>.`;
     if (t.id === 't2') return lvl === 1 ? `Lower growth: ${m(t.D1)} ÷ (${t.r} − ${dec(t.glo)}) = ${m(t.D1)} ÷ ${dec((t.r - t.glo))} = ${m(t.Vlo)}.`
       : `Lower growth: ${m(t.Vlo)}. Higher growth: ${m(t.D1)} ÷ ${dec((t.r - t.ghi))} = ${m(t.Vhi)}. The price of ${m0(t.P)} is ${t.zone === 'cheap' ? 'below both' : t.zone === 'dear' ? 'above both' : 'between them'}.`;
     if (t.id === 't3') { const c = t.comps, a = c.rows[c.blanks[0]], b = c.rows[c.blanks[1]];
@@ -319,7 +319,7 @@
       return lvl === 1 ? `In order, the five P/Es are ${s.join(', ')}. The middle one is ${c.med5}.`
         : `Median P/E: ${c.med5}. Value: ${c.med5} × ${m(t.EPS)} = ${m(t.Vc)}.`; }
     if (t.id === 't6') return lvl === 1 ? `Dividend yield = ${m(t.D1)} ÷ ${m0(t.P)} = ${p2(t.y)}.`
-      : `Dividend yield: ${p2(t.y)}. Implied growth: ${pc(t.r)} − ${p2(t.y)} = ${p2(t.gi)}, which is ${t.decision} than Ilse’s ${pc(t.g)}. In the calculator: <code>${t.r}-${t.D1}/${t.P}</code>.`;
+      : `Dividend yield: ${p2(t.y)}. Implied growth: ${pc(t.r)} − ${p2(t.y)} = ${p2(t.gi)}, which is ${t.decision} than Ilse’s ${pc(t.g)}. In Desmos: <code>${t.r}-${t.D1}/${t.P}</code>.`;
   }
   function praise(t) {
     if (t.id === 't1') return `Copperline is worth about ${m(t.V)} a share on Ilse’s forecast: ${m(t.D1)} of dividends next year, growing ${pc(t.g)} a year forever, at a ${pc(t.r)} required return.`;
