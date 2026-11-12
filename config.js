@@ -224,7 +224,7 @@
     calcHint: 'Use / to divide and parentheses to group: 2/(0.10-0.04) is a $2.00 dividend growing 4% a year at a 10% required return.',
     story: { title: 'The Valuation Desk', kicker: 'Corporate Finance, Unit 9', company: 'Bramble Street Research', team: 'Restaurant Research Team',
       from: 'Ilse Ostrander', fromTitle: 'senior analyst, Bramble Street Research',
-      dek: 'You have joined Bramble Street Research, which writes reports on restaurant stocks. Ilse Ostrander, a senior analyst, is valuing Copperline Burgers, a chain that raises its dividend every year.',
+      dek: 'A client of Bramble Street Research owns shares of Copperline Burgers and asks a simple question: buy more, sell, or hold? The answer depends on whether the shares are worth more or less than their price. Ilse Ostrander, a senior analyst, works out what they are worth three ways, and you work through each one with her.',
       whatBox: '',
       stepsLine: 'Ten short steps. Each shows a worked example in the same table you fill in, then you do the same calculation with your own numbers.' },
     steps: STEPS, quiz: QUIZ, walk: null, buildTasks, taskView, judgeTask, helpText, praise, selfAnswer, selfWrong,
