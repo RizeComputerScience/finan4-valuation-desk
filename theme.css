@@ -1,0 +1,71 @@
+/* The Valuation Desk theme (FINAN IV Unit 9), 2026-11-18. Loaded after desk.css; changes the look only.
+   A Bramble Street Research equity note: grey newsprint, black ink, blackberry for the research house and copper for
+   Copperline Burgers, a narrow grotesque for headings over a reading serif, a masthead rule, financial-summary tables
+   with a heavy top rule and a double rule under the total. Restrained on purpose. Dark mode is the same note on a dim screen. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,500;0,600;0,700;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap');
+:root{
+  --bg:#EFEDE6;--surface:#FAF9F5;--panel:#E5E2D9;--line:#CCC8BC;--line-strong:#6B675C;
+  --ink:#191816;--muted:#4F4B43;--brand:#4A1F45;--brand-ink:#FFFFFF;--brand-tint:#EEE3EC;
+  --ok:#1C6B3E;--ok-tint:#E0EFE4;--bad:#A3241C;--bad-tint:#F8E4E1;--hint:#34506E;--hint-tint:#E2E8EF;--focus:#191816;--hl:#F3E1AE;--ok-ink:#FFFFFF;
+  --copper:#9C521E;--rule:#191816;
+  --receipt-frame:#4A1F45;--receipt-paper:#F5F3EE;
+  --serif:'Newsreader','Iowan Old Style',Georgia,serif;--display:'Archivo Narrow','Arial Narrow',Arial,sans-serif;
+  --mono:'Archivo Narrow','Arial Narrow',Arial,sans-serif;}
+:root[data-theme="dark"]{
+  --bg:#18171A;--surface:#201F23;--panel:#2A282D;--line:#3B393F;--line-strong:#8E8A93;
+  --ink:#ECE9E3;--muted:#B7B2AA;--brand:#E3B3DA;--brand-ink:#2A1027;--brand-tint:#352533;
+  --ok:#7DD49A;--ok-tint:#16301F;--bad:#FF8D84;--bad-tint:#41201E;--hint:#A9C1DA;--hint-tint:#1C2838;--focus:#ECE9E3;--hl:#463C1C;--ok-ink:#18171A;
+  --copper:#E9A271;--rule:#ECE9E3;}
+
+body{font-size:18.5px;line-height:1.58;background:var(--bg);display:flex;flex-direction:column;min-height:100vh}
+/* masthead: a blackberry bar on top, a hairline under the header */
+header.bar{order:-2;background:var(--bg);border-top:7px solid var(--brand);border-bottom:1px solid var(--rule)}
+.brand{font-style:normal;font-family:var(--display);font-size:16px}
+.brand b{font:700 19px var(--display);letter-spacing:.005em}
+
+/* header art: only on the first screen */
+.desk-art{order:-1;display:none;width:calc(100% - 2.2rem);max-width:calc(820px - 2.2rem);height:auto;margin:1.6rem auto 0;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule)}
+body:has(#startBox) .desk-art{display:block}
+@media (max-width:600px){.desk-art{aspect-ratio:2.1/1;object-fit:cover;object-position:100% 50%}}
+:root[data-theme="dark"] .desk-art{filter:brightness(.88)}
+
+/* steps: the note's contents, square tabs; finished ones are set in blackberry */
+nav.steps{padding-top:.6rem}
+nav.steps ol{gap:5px}
+nav.steps button{border-radius:0;border:1px solid var(--line-strong);font:500 15px var(--display);padding:.2rem .65rem}
+nav.steps button.done{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+nav.steps button[aria-current="step"]{outline:2px solid var(--copper);outline-offset:2px}
+
+/* type: narrow grotesque headings, serif reading text */
+.kicker{font:600 15.5px var(--display);font-style:normal;color:var(--brand);border-top:1px solid var(--rule);padding-top:.45rem;max-width:14rem}
+h1{font:700 clamp(44px,7.4vw,70px)/1 var(--display);letter-spacing:-.012em;color:var(--ink)}
+h2{font:700 30px/1.12 var(--display);letter-spacing:-.005em}
+h3{font-family:var(--display);font-size:19px}
+.dek{font-size:20px;font-style:normal;color:var(--ink);max-width:34em}
+.place{font-family:var(--display);font-style:normal}
+.points{font:700 54px/1 var(--display);color:var(--ink);letter-spacing:-.01em}
+label,legend{font-family:var(--display);font-size:17px}
+
+/* cards: a page of the note, a heavy rule on top and a hairline under it */
+.memo{border-radius:0;border:0;border-top:3px solid var(--rule);box-shadow:inset 0 5px 0 var(--surface),inset 0 6px 0 var(--rule);padding-top:1.6rem}
+.box{border-radius:0;border-top:2px solid var(--brand);background:var(--panel)}
+.box h2,.box b:first-child{font-family:var(--display)}
+.stamp{border-radius:0;background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.btn,.btn-calc,.btn-quiet{border-radius:0}
+.btn,.btn-calc{font-family:var(--display);font-weight:700;letter-spacing:.01em}
+.btn-quiet{font-family:var(--display)}
+.choice span{border-radius:0;border-width:1px}
+.fb{border-radius:0}
+
+/* tables: the financial summary */
+table.cf{font:500 16.5px var(--mono);border-top:2px solid var(--rule)}
+table.cf caption{font:500 15px var(--display);font-style:normal;color:var(--muted)}
+table.cf th{font:700 14.5px var(--display);color:var(--ink);border-bottom:1px solid var(--rule);padding-top:.45rem}
+table.cf td{border-bottom:1px dotted var(--line-strong)}
+table.cf td.lbl,table.cf.ladder td.lbl{font:16.5px var(--serif)}
+table.cf tfoot tr.total td{border-top:1px solid var(--rule);border-bottom:3px double var(--rule)}
+table.cf td.neg{color:var(--bad)}
+.formula{font-family:var(--mono);border-radius:0;border-left:3px solid var(--copper)}
+.calc-strip{border-left-color:var(--copper);border-radius:0}
+details.example{border-radius:0;border-left-color:var(--brand)}
+input[type=text],input[type=email],textarea,input.money,table.cf input{border-radius:0}

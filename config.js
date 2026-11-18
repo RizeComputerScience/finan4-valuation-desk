@@ -13,7 +13,7 @@
   'use strict';
   const QUIZ = [
     { title: 'Quick check: the guardrail',
-      q: 'Halyard Chicken raised its dividend 12% last year. A colleague uses 12% as growth forever in the constant-growth model, with a 9% required return, and gets a negative value. What went wrong?',
+      q: 'Halyard Chicken raised its dividend 12% last year. A colleague uses 12% as growth forever in the Gordon growth model, with a 9% required return, and gets a negative value. What went wrong?',
       options: ['Growth forever has to stay below the required return, so 12% cannot be the long-run rate', 'The dividend is too small for the model', 'The required return should be lower than the growth rate', 'Nothing; the stock is worth less than zero'],
       answer: 0,
       why: ['Right. No business can outgrow its owners’ required return forever. Use a modest long-run rate well below it.',
@@ -35,7 +35,7 @@
     { id: 'cg1', label: 'Let it grow', kind: 'task' },
     { id: 'cg2', label: 'Cheap or expensive', kind: 'task' },
     { id: 'q1', label: 'Quick check', kind: 'check', quiz: 0 },
-    { id: 'pe1', label: 'A similar chain', kind: 'task' },
+    { id: 'pe1', label: 'A comparable chain', kind: 'task' },
     { id: 'pe2', label: 'Your own P/E', kind: 'task' },
     { id: 'ig1', label: 'Run it backward', kind: 'task' },
     { id: 'ig2', label: 'Faster or slower', kind: 'task' },
@@ -125,16 +125,16 @@
 
   const PROBLEM = {
     perp: (t) => ({ title: 'A dividend that never grows', place: 'Ilse starts with the simplest case.',
-      body: `<p>Suppose Copperline Burgers paid <b>${m(t.D)}</b> a share every year, forever, and never raised it. Its owners require <b>${pc(t.r)}</b>. What is one share worth? The first line is done for you.</p>` }),
+      body: `<p>Suppose Copperline Burgers paid <b>${m(t.D)}</b> a share every year, forever, and never raised it, a perpetuity. Its owners require <b>${pc(t.r)}</b>. What is one share worth? The first line is done for you.</p>` }),
     cg1: (t) => ({ title: 'Let the dividend grow', place: 'Copperline raises its dividend every year.',
       body: `<p>Copperline will pay <b>${m(t.D1)}</b> a share next year. Ilse expects the dividend to grow <b>${pc(t.g)}</b> a year forever, and owners require <b>${pc(t.r)}</b>. What is one share worth? The first line is done for you.</p>` }),
     cg2: (t) => ({ title: 'Cheap or expensive?', place: 'A client asks about Ferro Pizza.',
       body: `<p>Ferro Pizza will pay <b>${m(t.D1)}</b> a share next year, growing <b>${pc(t.g)}</b> a year forever, and owners require <b>${pc(t.r)}</b>. Its shares sell for <b>${m0(t.P)}</b>. Are they cheap or expensive?</p>`,
       choice: { legend: `At ${m0(t.P)}, Ferro’s shares look`, options: [['cheap', 'Cheap: the price is below the value'], ['dear', 'Expensive: the price is above the value']] } }),
-    pe1: (t) => ({ title: 'Value from a similar chain', place: 'Ilse wants a second value that does not depend on a growth forecast.',
-      body: `<p>Copperline earned <b>${m(t.E)}</b> a share last year. Tidewell Tacos, a similar chain, sells for <b>${mm(t.peerPrice)}</b> and earned <b>${mm(t.peerEps)}</b> a share. What does Tidewell’s P/E say Copperline is worth? The P/E is done for you.</p>` }),
+    pe1: (t) => ({ title: 'Value from a comp', place: 'Ilse wants a second value that does not depend on a growth forecast.',
+      body: `<p>Copperline earned <b>${m(t.E)}</b> a share last year. Tidewell Tacos, a comparable chain, sells for <b>${mm(t.peerPrice)}</b> and earned <b>${mm(t.peerEps)}</b> a share. What does Tidewell’s P/E multiple say Copperline is worth? The P/E is done for you.</p>` }),
     pe2: (t) => ({ title: 'Your own P/E', place: 'Ilse hands you a second company to price.',
-      body: `<p>Basswood Subs earned <b>${m(t.E)}</b> a share last year. Halyard Chicken, a similar chain, sells for <b>${mm(t.peerPrice)}</b> and earned <b>${mm(t.peerEps)}</b> a share. What does Halyard’s P/E say Basswood is worth?</p>` }),
+      body: `<p>Basswood Subs earned <b>${m(t.E)}</b> a share last year. Halyard Chicken, a comparable chain, sells for <b>${mm(t.peerPrice)}</b> and earned <b>${mm(t.peerEps)}</b> a share. What does Halyard’s P/E say Basswood is worth?</p>` }),
     ig1: (t) => ({ title: 'Run the model backward', place: 'Now start from the price instead.',
       body: `<p>Halyard Chicken’s shares sell for <b>${m0(t.P)}</b>, and it will pay <b>${m(t.D1)}</b> a share next year. Owners require <b>${pc(t.r)}</b>. What growth forever does the price assume? The dividend yield is done for you.</p>` }),
     ig2: (t) => ({ title: 'Faster or slower than Ilse?', place: 'Back to Copperline.',
@@ -202,7 +202,7 @@
     if (t.id === 'perp') return `${m(t.answer)} invested at ${pc(t.r)} earns ${m(t.D)} a year, forever. That is why the share is worth ${m(t.answer)}.`;
     if (t.id === 'cg1') return `With ${pc(t.g)} growth, Copperline is worth ${m(t.answer)} a share, far more than a dividend that never grows.`;
     if (t.id === 'cg2') return `Ferro is worth about ${m(t.answer)} on these assumptions, so at ${m0(t.P)} its shares look ${t.decision === 'cheap' ? 'cheap' : 'expensive'}.`;
-    if (t.id === 'pe1') return `Investors pay ${t.pe} times earnings for Tidewell. At the same multiple, Copperline is worth ${m(t.answer)} a share.`;
+    if (t.id === 'pe1') return `Investors pay ${t.pe} times earnings for Tidewell. At the same P/E multiple, Copperline is worth ${m(t.answer)} a share.`;
     if (t.id === 'pe2') return `At Halyard’s P/E of ${t.pe}, Basswood is worth ${m(t.answer)} a share.`;
     if (t.id === 'ig1') return `At ${m0(t.P)}, investors expect Halyard’s dividend to grow about ${pc(t.answer)} a year forever.`;
     if (t.id === 'ig2') return `The price assumes about ${p2(t.answer)} growth, ${t.decision} than Ilse’s ${pc(t.g)}. ${t.decision === 'faster' ? 'If Ilse is right, the shares look expensive.' : 'If Ilse is right, the shares look cheap.'}`;
@@ -229,6 +229,6 @@
       stepsLine: 'Ten short steps. Each shows a worked example in the same table you fill in, then you do the same calculation with your own numbers.' },
     steps: STEPS, quiz: QUIZ, walk: null, buildTasks, taskView, judgeTask, helpText, praise, selfAnswer, selfWrong,
     note: { title: 'A note for the report', label: 'Your note to Ilse', minWords: 30, receiptHeading: 'Note to the senior analyst',
-      prompt: 'Give Ilse your two values for Copperline, from its dividends and from Tidewell’s P/E, and the growth today’s price assumes. Which number would you trust most, and why?' },
+      prompt: 'Give Ilse your two values for Copperline, from the dividend discount model and from Tidewell’s P/E multiple, and the growth today’s price assumes. Which number would you trust most, and why?' },
   };
 })(typeof window !== 'undefined' ? window : globalThis);
